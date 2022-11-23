@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.backbase</groupId>
         <artifactId>product-summary</artifactId>
-        <version>2022.11</version>
+        <version>2022.10.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -24,7 +24,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.backbase.products</groupId>
+            <groupId>com.backbase.dbs.arrangement</groupId>
             <artifactId>arrangement-manager</artifactId>
             <type>war</type>
         </dependency>

@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   remote-config-web-app:
-    image: repo.backbase.com/backbase-docker-releases/remote-config-web-app:2022.11.1
+    image: repo.backbase.com/backbase-docker-releases/remote-config-web-app:2022.10.3
     container_name: remote-config-web-app
     environment:
       - API_URL=http://localhost:7777/api

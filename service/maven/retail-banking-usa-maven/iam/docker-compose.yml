@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   identity:
-    image: repo.backbase.com/backbase-docker-releases/backbase-identity:2022.11.1
+    image: repo.backbase.com/backbase-docker-releases/backbase-identity:2022.10.3
     container_name: identity
     environment:
       KEYCLOAK_BACKBASE_EVENT_LISTENERS_AUDIT_INTEGRATIONSERVICEURL: "http://host.docker.internal:8092/audit-service"

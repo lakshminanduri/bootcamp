@@ -6,7 +6,7 @@
 
     <groupId>com.backbase</groupId>
     <artifactId>banking</artifactId>
-    <version>2022.11</version>
+    <version>2022.10.1</version>
     <packaging>pom</packaging>
 
     <name>Backbase Banking :: Parent</name>
@@ -22,7 +22,7 @@
 
         <messaging.password>password</messaging.password>
 
-        <backbase-bom.version>2022.11.1</backbase-bom.version>
+        <backbase-bom.version>2022.10.3</backbase-bom.version>
 
 
         <jdbc.driver.groupId>mysql</jdbc.driver.groupId>

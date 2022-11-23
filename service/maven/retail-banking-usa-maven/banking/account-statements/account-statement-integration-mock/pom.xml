@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.backbase</groupId>
         <artifactId>account-statements</artifactId>
-        <version>2022.11</version>
+        <version>2022.10.1</version>
     </parent>
 
     <artifactId>account-statement-integration-mock</artifactId>

@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.backbase</groupId>
         <artifactId>payments</artifactId>
-        <version>2022.11</version>
+        <version>2022.10.1</version>
     </parent>
 
     <artifactId>payment-order-service</artifactId>

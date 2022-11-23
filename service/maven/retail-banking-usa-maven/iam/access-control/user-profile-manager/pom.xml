@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.backbase</groupId>
         <artifactId>access-control</artifactId>
-        <version>2022.11</version>
+        <version>2022.10.1</version>
     </parent>
 
     <artifactId>user-profile-manager</artifactId>
