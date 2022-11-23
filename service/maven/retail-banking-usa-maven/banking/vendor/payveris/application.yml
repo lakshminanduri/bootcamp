@@ -1,0 +1,21 @@
+---
+### Live profile
+spring:
+  profiles:
+    active: live
+  datasource:
+    driver-class-name: ${spring.datasource.driver-class-name}
+    username: ${spring.datasource.username.payveris}
+    password: ${spring.datasource.password.payveris}
+    url: ${spring.datasource.url.payveris}
+
+backbase:
+  payveris:
+    baseUrl: https://test-api.regrpayverisbp.com/api/services/
+    version: 7.29
+    clientCode: pleaseAddHereYourClientCode
+    apiKey: pleaseAddHereYourApiKey
+    sso:
+      url: https://test.regrpayverisbp.com/pp/sso/eu/
+    userCodeMapper:
+      type: outbound-integration

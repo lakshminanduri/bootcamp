@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.backbase</groupId>
+        <artifactId>vendor</artifactId>
+        <version>2022.11</version>
+    </parent>
+
+    <artifactId>payveris</artifactId>
+
+    <packaging>pom</packaging>
+
+    <name>Backbase Banking :: Vendor :: payveris</name>
+
+    <properties>
+        <spring.datasource.driver-class-name>com.mysql.jdbc.Driver</spring.datasource.driver-class-name>
+        <spring.datasource.url.payveris>jdbc:mysql://localhost:3306/payveris?useSSL=false</spring.datasource.url.payveris>
+        <spring.datasource.username.payveris>root</spring.datasource.username.payveris>
+        <spring.datasource.password.payverise>root</spring.datasource.password.payverise>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.backbase.dbs.vendor</groupId>
+            <artifactId>payveris</artifactId>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.backbase.oss</groupId>
+                <artifactId>blade-maven-plugin</artifactId>
+                <configuration>
+                    <openBrowserOnStartup>false</openBrowserOnStartup>
+                    <detectAndConfigureSpringConfigLocation>true</detectAndConfigureSpringConfigLocation>
+                    <systemProperties>
+                        <spring.datasource.driver-class-name>${spring.datasource.driver-class-name}</spring.datasource.driver-class-name>
+                        <spring.datasource.url.payveris>${spring.datasource.url.payveris}</spring.datasource.url.payveris>
+                        <spring.datasource.username.payveris>${spring.datasource.username.payveris}</spring.datasource.username.payveris>
+                        <spring.datasource.password.payveris>${spring.datasource.password.payveris}</spring.datasource.password.payveris>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
