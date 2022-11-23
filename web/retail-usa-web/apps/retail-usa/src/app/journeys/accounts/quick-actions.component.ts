@@ -5,12 +5,12 @@ export type QuickActionLink = {
   title: string;
   url: string;
   permission?: string;
-  remoteConfig?:boolean
+  remoteConfig?:boolean // added
 };
 @Component({
   selector: 'bb-quick-actions',
   template: `
-    <div class="card d-block p-2">
+    <div class="card d-block p-2" >
       <div class="bb-block--sm bb-heading-widget heading-widget pb-0 pt-3 px-3">
         <bb-header-ui
           heading="Quick Actions"
@@ -24,8 +24,11 @@ export type QuickActionLink = {
       <ul class="bb-navigation bb-navigation--link">
         <ng-container *ngFor="let link of links">
           <ng-container
-            *ngTemplateOutlet="!!link.permission ? linkBoxWithPermission : linkBox; context: { $implicit: link }"
-          >
+          *ngTemplateOutlet="
+            link.remoteConfig !== undefined ? linkBoxWithConfig : linkBox;
+            context: { $implicit: link }
+          "
+        >
           </ng-container>
         </ng-container>
       </ul>
