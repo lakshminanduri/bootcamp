@@ -4,10 +4,11 @@ test.describe('Budget test', () => {
   test.use({ loginState: LoginState.loggedIn, testUserType: UserType.userWithSingleContext });
 
   test('User can create new budget', async ({ manageBudgetsPage }) => {
+    const budgetCategory = ' Business Services ';
     const budgetAmount = '666';
 
     await manageBudgetsPage.createBudgetButton.click();
-    await manageBudgetsPage.categoryRadioButtons.first().click();
+    await manageBudgetsPage.categoryRadioButtons.filter({ hasText: budgetCategory }).click();
     await manageBudgetsPage.continueButton.click();
     await manageBudgetsPage.budgetAmountInput.fill(budgetAmount);
     await manageBudgetsPage.confirmButton.click();
@@ -24,7 +25,7 @@ test.describe('Budget test', () => {
     await manageBudgetsPage.confirmButton.click();
     await expect(manageBudgetsPage.notificationToast).toHaveText('Budget updated successfully');
     await page.reload({ waitUntil: 'networkidle' });
-    expect(firstBudgetCard.budgetAmountSpendAndTotal).toContainText(`${newBudgetAmount}`);
+    expect(firstBudgetCard.budgetAmountSpendAndTotal).toHaveText(`Spent$0Limit$${newBudgetAmount}`);
   });
 
   test('User can delete budget', async ({ manageBudgetsPage }) => {

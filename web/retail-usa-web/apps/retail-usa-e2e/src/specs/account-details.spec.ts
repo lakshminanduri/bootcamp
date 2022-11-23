@@ -1,11 +1,9 @@
 import { test, expect, LoginState } from '@backbase/retail-e2e';
 import { UserType } from '@backbase/retail-e2e';
 
-const { describe, use } = test;
-
-describe('Accounts Details:', () => {
-  use({ loginState: LoginState.loggedIn, testUserType: UserType.userWithSingleContext });
-  describe.configure({ mode: 'parallel' });
+test.describe('Accounts Details:', () => {
+  test.use({ loginState: LoginState.loggedIn, testUserType: UserType.userWithSingleContext });
+  test.describe.configure({ mode: 'parallel' });
 
   test('User can see My Accounts page header', async ({ myAccountsPage }) => {
     await expect(myAccountsPage.journeyUi).toBeVisible();
@@ -25,65 +23,5 @@ describe('Accounts Details:', () => {
     await expect(myAccountsPage.achRoutingNumberLabel).toBeVisible();
     await expect(myAccountsPage.achRoutingNumberLabel).toHaveText('ACH Routing Number');
     await expect(myAccountsPage.achRoutingNumber).toBeVisible();
-  });
-
-  describe('When the show_maintenance_banner feature is toggled in Remote Config', () => {
-    test('User should see a maintenance banner if show_maintenance_banner is true', async ({
-      page,
-      myAccountsPage,
-    }) => {
-      await page.route('**/parameters', async (route) => {
-        route.fulfill({
-          body: '{"show_maintenance_banner": true, "maintenance_banner_text": "Some services are unavailable due to maintenance"}',
-        });
-      });
-      await page.reload({ waitUntil: 'networkidle' });
-
-      await expect(myAccountsPage.remoteConfigMaintenanceBanner).toBeVisible();
-      await expect(myAccountsPage.remoteConfigMaintenanceText).toContainText(
-        'Some services are unavailable due to maintenance',
-      );
-    });
-
-    test('User should see a maintenance banner with fallback text if show_maintenance_banner is true', async ({
-      page,
-      myAccountsPage,
-    }) => {
-      await page.route('**/parameters', async (route) => {
-        route.fulfill({
-          body: '{"show_maintenance_banner": true}',
-        });
-      });
-      await page.reload({ waitUntil: 'networkidle' });
-
-      await expect(myAccountsPage.remoteConfigMaintenanceBanner).toBeVisible();
-      await expect(myAccountsPage.remoteConfigMaintenanceText).toContainText(
-        'Dear Customer, please be aware that some services in online banking will be unavailable because of maintenance activity.',
-      );
-    });
-
-    test('User should not see a maintenance banner if show_maintenance_banner is false', async ({
-      page,
-      myAccountsPage,
-    }) => {
-      await page.route('**/parameters', async (route) => {
-        route.fulfill({ body: '{"show_maintenance_banner": false}' });
-      });
-      await page.reload({ waitUntil: 'networkidle' });
-
-      await expect(myAccountsPage.remoteConfigMaintenanceBanner).toBeHidden();
-    });
-
-    test('User should not see a maintenance banner if Remote Config service is unavailable', async ({
-      page,
-      myAccountsPage,
-    }) => {
-      await page.route('**/parameters', async (route) => {
-        route.fulfill({ status: 404 });
-      });
-      await page.reload({ waitUntil: 'networkidle' });
-
-      await expect(myAccountsPage.remoteConfigMaintenanceBanner).toBeHidden();
-    });
   });
 });

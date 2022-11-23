@@ -1,0 +1,6 @@
+/node_modules
+**/logsdebug.log
+node_modules
+*.log
+.angular
+.sdlc

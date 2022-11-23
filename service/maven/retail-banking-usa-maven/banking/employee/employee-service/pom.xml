@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.backbase</groupId>
         <artifactId>employee</artifactId>
-        <version>2022.11</version>
+        <version>2022.10.1</version>
     </parent>
 
     <artifactId>employee-service</artifactId>

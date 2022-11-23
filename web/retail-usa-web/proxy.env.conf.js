@@ -1,7 +1,7 @@
 module.exports = [
   {
     context: '/api',
-    target: '<change_this_placeholder_to_your_BE_url>',
+    target: 'https://app.prd.sdbx.live.backbaseservices.com/',
     secure: false,
     changeOrigin: true,
     bypass: function (req) {
@@ -10,7 +10,7 @@ module.exports = [
   },
   {
     context: '/auth',
-    target: '<change_this_placeholder_to_your_identity_url>',
+    target: 'https://app.prd.sdbx.live.backbaseservices.com/',
     secure: false,
     changeOrigin: true,
     bypass: function (req) {

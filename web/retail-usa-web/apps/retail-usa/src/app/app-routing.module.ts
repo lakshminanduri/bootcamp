@@ -86,16 +86,26 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'pockets',
+        path: 'messages',
         loadChildren: () =>
-          import('./journeys/accounts/manage-pockets-journey.module').then((m) => m.ManagePocketsJourneyBundleModule),
+          import('./journeys/more/bundle-messages-client-inbox-journey-bundle.module').then(
+            (m) => m.MessagesClientInboxJourneyBundleModule,
+          ),
         data: {
-          title: $localize`:@@accounts.nav.item.title:Pockets`,
-          entitlements: PERMISSIONS.canViewManagePockets,
-          cssClasses: ['container--fixed-width mx-auto'],
-          redirectTo: 'pockets',
+          title: $localize`:@@messages.nav.item.title:Messages - Retail Banking`,
         },
       },
+      // {
+      //   path: 'pockets',
+      //   loadChildren: () =>
+      //     import('./journeys/accounts/manage-pockets-journey.module').then((m) => m.ManagePocketsJourneyBundleModule),
+      //   data: {
+      //     title: $localize`:@@accounts.nav.item.title:Pockets`,
+      //     entitlements: PERMISSIONS.canViewManagePockets,
+      //     cssClasses: ['container--fixed-width mx-auto'],
+      //     redirectTo: 'pockets',
+      //   },
+      // },
       {
         path: 'transfers',
         data: { cssClasses: ['container--fixed-width mx-auto'] },
@@ -322,15 +332,26 @@ const routes: Routes = [
             },
           },
           {
-            path: 'messages',
+            path: 'pockets',
             loadChildren: () =>
-              import('./journeys/more/bundle-messages-client-inbox-journey-bundle.module').then(
-                (m) => m.MessagesClientInboxJourneyBundleModule,
-              ),
+              import('./journeys/accounts/manage-pockets-journey.module').then((m) => m.ManagePocketsJourneyBundleModule),
             data: {
-              title: $localize`:@@messages.nav.item.title:Messages - Retail Banking`,
+              title: $localize`:@@accounts.nav.item.title:Pockets`,
+              entitlements: PERMISSIONS.canViewManagePockets,
+              cssClasses: ['container--fixed-width mx-auto'],
+              redirectTo: 'pockets',
             },
           },
+          // {
+          //   path: 'messages',
+          //   loadChildren: () =>
+          //     import('./journeys/more/bundle-messages-client-inbox-journey-bundle.module').then(
+          //       (m) => m.MessagesClientInboxJourneyBundleModule,
+          //     ),
+          //   data: {
+          //     title: $localize`:@@messages.nav.item.title:Messages - Retail Banking`,
+          //   },
+          // },
           {
             path: 'find-us',
             loadChildren: () => import('./journeys/more/bundle-places.module').then((m) => m.PlacesJourneyBundleModule),

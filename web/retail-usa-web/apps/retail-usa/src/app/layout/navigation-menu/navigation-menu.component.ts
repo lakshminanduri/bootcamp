@@ -8,8 +8,8 @@ import { RetailAppRemoteConfig } from '../../remote-config/remote-config';
   templateUrl: './navigation-menu.component.html',
 })
 export class NavigationMenuComponent {
-  readonly permissions = PERMISSIONS;
-  readonly showManageContacts = this.remoteConfigService.getValue('show_manage_contacts');
+  permissions = PERMISSIONS;
+  readonly showContacts = this.remoteConfig.getValue('show_contacts');
 
-  constructor(private remoteConfigService: RemoteConfigService<RetailAppRemoteConfig>) {}
+  constructor(private remoteConfig: RemoteConfigService<RetailAppRemoteConfig>) {}
 }

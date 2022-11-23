@@ -8,25 +8,34 @@
       #myAccountsRouterLink="routerLinkActive"
       [attr.aria-current]="myAccountsRouterLink.isActive ? 'page' : undefined"
       role="link"
-    >
+    > ><bb-icon-ui
+    name="accounts"
+    size="s"
+    color="primary"
+  ></bb-icon-ui>
       <span class="bb-layout__horizontal-nav-item-description" i18n="@@myAccounts.nav.item.description">
         My Accounts
       </span>
     </a>
   </li>
-  <!-- Pockets -->
-  <li class="bb-layout__horizontal-nav-item" *bbIfEntitlements="permissions.canViewManagePockets">
+  <li class="bb-layout__horizontal-nav-item">
+    
     <a
       class="bb-layout__horizontal-nav-link"
-      routerLink="/pockets"
+      ngbDropdownItem
       routerLinkActive="bb-layout__horizontal-nav-link--active"
-      #pocketsRouterLink="routerLinkActive"
-      [attr.aria-current]="pocketsRouterLink.isActive ? 'page' : undefined"
-      role="link"
-    >
-      <span class="bb-layout__horizontal-nav-item-description" i18n="@@pockets.nav.item.description"> Pockets </span>
+      routerLink="/messages"
+      #messagesRouterLink="routerLinkActive"
+      [attr.aria-current]="messagesRouterLink.isActive ? 'page' : undefined"
+    ><bb-icon-ui
+    name="mail"
+    size="s"
+  ></bb-icon-ui>
+    <span class="bb-layout__horizontal-nav-item-description" i18n="@@messages.nav.item.description"> Messages </span>
+     
     </a>
   </li>
+  
   <!-- Transfers -->
   <li
     class="bb-layout__horizontal-nav-item"
@@ -49,6 +58,7 @@
       id="bb-menu-header-button-1"
       role="button"
     >
+    <bb-icon-ui class="mr-2" name="transactions"></bb-icon-ui>
       <span class="bb-layout__horizontal-nav-item-description" i18n="@@transfers.nav.item.description">Transfers</span>
       <bb-icon-ui
         class="bb-layout__horizontal-nav-expand-marker bb-layout__horizontal-nav-expand-marker--vertical"
@@ -174,6 +184,10 @@
       id="bb-menu-header-button-transfers"
       role="button"
     >
+    <bb-icon-ui
+    name="payment"
+    size="s"
+  ></bb-icon-ui>
       <span class="bb-layout__horizontal-nav-item-description" i18n="@@bill.pay.nav.item.description">Bill Pay</span>
       <bb-icon-ui
         class="bb-layout__horizontal-nav-expand-marker bb-layout__horizontal-nav-expand-marker--vertical"
@@ -269,6 +283,11 @@
       id="bb-menu-header-button-3"
       role="button"
     >
+
+    <bb-icon-ui
+    name="assessment"
+    size="s"
+  ></bb-icon-ui>
       <span class="bb-layout__horizontal-nav-item-description" i18n="@@analytics.nav.item.description">Analytics</span>
       <bb-icon-ui
         class="bb-layout__horizontal-nav-expand-marker bb-layout__horizontal-nav-expand-marker--vertical"
@@ -364,6 +383,10 @@
       id="bb-menu-header-button-4"
       role="button"
     >
+    <bb-icon-ui
+    name="user"
+    size="s"
+  ></bb-icon-ui>
       <span class="bb-layout__horizontal-nav-item-description" i18n="@@self.service.nav.item.description"
         >Self service</span
       >
@@ -452,7 +475,7 @@
             </div>
           </a>
         </li>
-        <ng-container *ngIf="showManageContacts">
+        <ng-container *ngIf="showContacts">
           <li *bbIfEntitlements="permissions.canViewManageContacts">
             <a
               class="bb-layout__horizontal-nav-submenu-link"
@@ -557,7 +580,7 @@
             </div>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a
             class="bb-layout__horizontal-nav-submenu-link"
             ngbDropdownItem
@@ -570,8 +593,21 @@
               <div class="bb-layout__horizontal-nav-submenu-title" i18n="@@messages.nav.submenu.title">Messages</div>
             </div>
           </a>
+        </li> -->
+        <li class="bb-layout__horizontal-nav-item" *bbIfEntitlements="permissions.canViewManagePockets">
+          <a
+            class="bb-layout__horizontal-nav-submenu-link" ngbDropdownItem
+            routerLink="/more/pockets"
+            routerLinkActive="bb-layout__horizontal-nav-submenu-link--active"
+            #pocketsRouterLink="routerLinkActive"
+            [attr.aria-current]="pocketsRouterLink.isActive ? 'page' : undefined"
+          >
+          <div class="bb-layout__horizontal-nav-submenu-item-label">
+            <div class="bb-layout__horizontal-nav-submenu-title" i18n="@@pockets.nav.submenu.title">Pockets</div>
+          </div>
+            <!-- <span class="bb-layout__horizontal-nav-item-description" i18n="@@pockets.nav.item.description"> Pockets </span> -->
+          </a>
         </li>
-
         <li *bbIfEntitlements="permissions.canViewPlaces">
           <a
             class="bb-layout__horizontal-nav-submenu-link"

@@ -1,14 +1,14 @@
 {
-  "baseUrl": "https://app.ret-stable.reference.azure.backbaseservices.com/web/",
-  "baasKey": "X-REFERENCE-BAAS",
-  "baasToken": "reference-ret-stable-3a25b548-a2c6-ac02-6497-1ce916e5b958",
+  "baseUrl": "https://app.ret-stable.ref.live.backbaseservices.com/web/",
+  "baasKey": "X-PRDL-BAAS",
+  "baasToken": "prdl-ret-stable-5736696d-00bb-49b5-9036-d81c2b7d2c4d",
   "twilio": {
     "accountSid": "AC01c7c2f44ffdecece09b7ef2de3a0a6d",
     "authToken": "23d7809a5237926513fae7525df963c7"
   },
   "users": {
     "userWithSingleContext": {
-      "username": "ref-az-ret-stable-emily-autotest",
+      "username": "ref-ret-stable-emily-autotest",
       "password": "Pass1234",
       "fullName": "emily-autotest Jones"
     },

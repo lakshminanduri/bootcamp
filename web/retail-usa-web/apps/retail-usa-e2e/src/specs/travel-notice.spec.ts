@@ -19,9 +19,7 @@ test.describe('Travel Notice test', () => {
 
     await createTravelNoticePage.continueButton.nth(1).click();
     await createTravelNoticePage.confirmButton.click();
-    await expect(travelNoticeListPage.travelNoticeItemHeaders.filter({ hasText: travelDestination })).not.toHaveCount(
-      0,
-    );
+    await expect(travelNoticeListPage.travelNoticeItemHeaders.filter({ hasText: travelDestination })).toHaveCount(1);
   });
 
   test('Delete travel notice succesfully', async ({ travelNoticeListPage }) => {

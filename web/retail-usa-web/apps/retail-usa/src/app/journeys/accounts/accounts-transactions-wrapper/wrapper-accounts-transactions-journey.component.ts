@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { RemoteConfigService } from '@backbase/remote-config-ang';
-import { RetailAppRemoteConfig } from '@backbase/retail-loans-journey-ang/lib/models/remote-config.model';
 import { PERMISSIONS } from '../../../auth/permissions';
 import { QuickActionLink } from '../quick-actions.component';
 
@@ -9,19 +7,6 @@ import { QuickActionLink } from '../quick-actions.component';
   template: `
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-          <bb-alert-ui
-            *ngIf="remoteConfigParameters.showMaintenanceBanner"
-            modifier="warning"
-            title="Maintenance alert"
-            i18n-title="@@accounts.remote-config-banner.title"
-            dismissible="true"
-          >
-            <p i18n="@@accounts.remote-config-banner.text">
-              {{ remoteConfigParameters.maintenanceBannerText }}
-            </p>
-          </bb-alert-ui>
-        </div>
         <div class="col-md-8">
           <router-outlet></router-outlet>
         </div>
@@ -41,11 +26,6 @@ import { QuickActionLink } from '../quick-actions.component';
   `,
 })
 export class AccountsTransactionsJourneyWrapperComponent {
-  readonly remoteConfigParameters = {
-    showMaintenanceBanner: this.remoteConfigService.getValue('show_maintenance_banner'),
-    maintenanceBannerText: this.remoteConfigService.getValue('maintenance_banner_text'),
-  };
-
   quickActionLinks: QuickActionLink[] = [
     {
       menuIcon: 'settings',
@@ -84,6 +64,4 @@ export class AccountsTransactionsJourneyWrapperComponent {
       permission: PERMISSIONS.canViewPlaces,
     },
   ];
-
-  constructor(private remoteConfigService: RemoteConfigService<RetailAppRemoteConfig>) {}
 }

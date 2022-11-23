@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+// // @import '~@backbase/backbase-theme-retail-preset/scss/main';
+@import './themes/backbase-theme-your-playground-preset/scss/main.scss';
 
 @import '~@backbase/backbase-theme-retail-preset/scss/main';
 
@@ -35,7 +37,8 @@ html {
     width: 94px;
     height: 100px;
 
-    background: url(/assets/bb-login-with-signup-widget-ang/logo-emblem.svg) center center no-repeat;
+    background: url(./themes/backbase-theme-your-playground-preset/assets/images/logo-emblem.svg) center center no-repeat;
+    background-size: 90px;
   }
 }
 
