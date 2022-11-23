@@ -22,7 +22,7 @@
         "aot": true,
         "assets": [
           {
-            "input": "libs/retail/assets/src",
+            "input": "apps/retail-usa/src/themes/backbase-theme-your-playground-preset/assets/images",
             "glob": "favicon.ico",
             "output": "."
           },
@@ -73,7 +73,7 @@
           }
         ],
         "styles": ["apps/retail-usa/src/styles.scss",
-        "src/themes/backbase-theme-your-playground-preset/scss/main.scss"],
+        "apps/retail-usa/src/themes/backbase-theme-your-playground-preset/scss/main.scss"],
         "scripts": []
       },
       "configurations": {
