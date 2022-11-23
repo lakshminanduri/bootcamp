@@ -12,28 +12,6 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Added
 
-## [2022.11]
-
-### Changed
-
-- Bump `@backbase/account-statement-retail-journey-ang` to version `3.2.0`
-- Bump `@backbase/account-statements-http-ang` to version `2.3.0`
-- Bump `@backbase/contact-manager-journey-ang` to `2.2.0`
-- Bump `@backbase/ui-ang` to version `8.3.0` - fix displaying of "initiate payment" dialog [MAINT-18078]
-- Bump `@backbase/ui-ang` to version `~8.4.0-pr.1` and `@backbase/places-journey-ang` to fix [MAINT-14722]
-- Bump `@backbase/income-spending-analysis-journey-ang` to `2.1.0` - limit donut chart for one month view in spending|income analysis [NVCTS-1432]
-- `@backbase/income-spending-analysis-journey-ang` - Align month-selector buttons with design-works [NVCTS-1432]
-- Bump `@backbase/turnovers-journey-ang` to `2.0.1` - Align month-selector buttons with design-works [NVCTS-1432]
-- Bump `@backbase/places-journey-ang` to `2.0.4` - Fix work-time UI inconsistency on tablet screen [WEB2-1737]
-- Bump `@backbase/authorized-users-journey-ang` to `2.0.1` - expose assets path token [MAINT-18518]
-- Bump `@backbase/accounts-transactions-journey-ang` to version `4.10.0` - Include EAA (External Account Aggravation) feature and add Api docs to `accounts-transactions-journey-ang`.
-
-### Fixed
-
-### Added
-
-- Add Remote Config feature flags in the Retail Web App [RCON-45]
-
 ## [2022.10.1]
 
 ### Changed
@@ -131,10 +109,6 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Fixed `accounts-transactions-journey-ang` to read `apiKey` from an environment variable.
 - Fixed 'User can edit existing budget' test
 - Fixed 'Added a test case to add electronic payee and removed unused code'
-- Fixed 'Create budget" test
-- Fixed 'Edit budget' and 'Create travel notice' tests
-- Bump `@backbase/manage-pockets-journey-ang` to `2.0.2` - Fixed empty screen conditions for it to be displayed [MAINT-19558]
-- Bump `@backbase/cards-management-journey-ang` to `3.1.3` - Exposed `CardDetailsComponent`, `CardsListComponent`, `CardsTravelNoticeComponent`, `PaymentCardComponent` [MAINT-18406]
 
 ### Added
 

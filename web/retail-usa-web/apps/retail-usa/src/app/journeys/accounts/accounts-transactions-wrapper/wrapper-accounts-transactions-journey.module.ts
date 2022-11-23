@@ -12,7 +12,6 @@ import { CampaignSpaceJourneyBundleModule } from './campaign-space-journey.modul
 import { AccountsTransactionsJourneyWrapperComponent } from './wrapper-accounts-transactions-journey.component';
 import { APP_TRANSACTIONS_BASE_PATH } from '../../../service-paths.module';
 import { ACCOUNTS_TRANSACTIONS_JOURNEY_TRANSACTIONS_BASE_PATH } from '@backbase/accounts-transactions-journey-ang';
-import { AlertModule } from '@backbase/ui-ang/alert';
 
 const routes: Routes = [
   {
@@ -33,7 +32,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [AccountsTransactionsJourneyWrapperComponent, QuickActionsComponent],
   imports: [
-    AlertModule,
     QuickTransferJourneyModule,
     RouterModule.forChild(routes),
     CommonModule,
