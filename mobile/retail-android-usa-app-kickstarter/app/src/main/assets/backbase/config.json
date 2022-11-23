@@ -1,0 +1,17 @@
+{
+  "development": {
+    "debugEnable": false
+  },
+  "backbase": {
+    "serverURL": "https://app.example.com",
+    "localModelPath": "$(contextRoot)/localModel.json",
+    "experience": "",
+    "version": "6.1.5",
+    "identity": {
+      "baseURL": "https://identity.example.com",
+      "realm": "example-realm",
+      "clientId": "example-client-id",
+      "applicationKey": "example-application-key"
+    }
+  }
+}

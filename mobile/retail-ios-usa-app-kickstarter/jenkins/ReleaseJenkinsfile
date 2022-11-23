@@ -1,0 +1,74 @@
+@Library('jenkins-shared-library@latest') l1
+@Library('ctrl-shared-jenkins-library@latest') l2
+@Library('wa3-fa-shared-library@latest') l3
+
+pipeline {
+    agent {
+        kubernetes {
+            label "jenkins-maven-slave-jdk11"
+        }
+    }
+
+    environment {
+        PROJECT_KEY = "MB"
+        SLACK_ROOM = "#rnd-retail-productized-apps-jenkins"
+    }
+
+    parameters {
+        string(name: "BRANCH_NAME", defaultValue: "master", description: "Branch from which the release will be created")
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout([
+                        $class:'GitSCM',
+                        branches: [[name: '${BRANCH_NAME}']],
+                        extensions:scm.extensions + [[$class:'LocalBranch', localBranch:'**'], [$class:'WipeWorkspace'],
+                                                      [$class:'CloneOption', shallow:false, timeout:60]],
+                        userRemoteConfigs:scm.userRemoteConfigs
+                ])
+        	  }
+        }
+
+        stage('Initialize') {
+            steps {
+                script {
+                    pom = readMavenPom(file: 'pom.xml')
+                }
+            }
+        }
+
+        stage('Build & Test & Verify') {
+            steps {
+                mvnBuild("mvn install")
+            }
+        }
+
+        stage('Release') {
+            steps {
+                script {
+                    mvnBuild("mvn --batch-mode release:prepare release:perform")
+                }
+            }
+    	}
+
+    	stage('Promote Release') {
+            steps {
+                script {
+                    promoteMultiModuleArtifact(pom)
+                }
+            }
+        }
+
+    }
+
+    post {
+        success {
+            slackSuccess(SLACK_ROOM, pom)
+        }
+        failure {
+            slackFailure(SLACK_ROOM, pom)
+        }
+    }
+}

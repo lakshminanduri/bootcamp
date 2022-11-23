@@ -1,0 +1,3 @@
+apply plugin: 'org.sonarqube'
+
+// TODO: add sonarqube specific configuration

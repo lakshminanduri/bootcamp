@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--NOTE When creating a custom style for an existing attribute make sure to set the default style as parent style-->
+  <!--  example-->
+  <!--  <style name="Widget.MyCustomButton" parent="@style/Widget.Backbase.Button.Primary">-->
+  <!--    <item name="android:minHeight">100dp</item>-->
+  <!--  </style>-->
+</resources>

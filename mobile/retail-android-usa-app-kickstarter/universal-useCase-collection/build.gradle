@@ -1,0 +1,104 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+sonarqube.skipProject = true
+
+android {
+    compileSdkVersion sdkVersions.compileSdk
+
+    defaultConfig {
+        minSdkVersion sdkVersions.minSdk
+        targetSdkVersion sdkVersions.targetSdk
+
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+        freeCompilerArgs += ["-Xjvm-default=enable"]
+    }
+
+    packagingOptions {
+        resources {
+            excludes += resourceExclusions
+        }
+    }
+}
+
+ext {
+    /**
+     * Application project's dependency, this value is replaced by `deps.universalApp` before shipping this module
+     * to the ModelBank repositories.
+     */
+    applicationDependency = deps.universalApp
+}
+
+dependencies {
+    implementation applicationDependency
+    implementation coreDeps.glide
+
+    coreLibraryDesugaring androidDeps.desugarJdkLibs
+
+    // region UseCase dependencies
+    implementation deps.accountsAndTransactionsAccountsUseCase
+    implementation deps.accountsAndTransactionsFinancialInstitutionsUseCase
+    implementation deps.accountsAndTransactionsTransactionUseCase
+    implementation deps.accountStatementsUseCase
+    implementation deps.addressAutocompleteUseCase
+    implementation deps.cardsManagementUseCase
+    implementation deps.cardsTravelNoticeUseCase
+    implementation deps.cardsUserManagerUseCase
+    implementation deps.contactsUseCase
+    implementation deps.engagementChannelsOrchestratorBannersUseCase
+    implementation deps.entitlementsUseCase
+    implementation deps.featureFilterUseCase
+    implementation deps.financialInsightsUseCase
+    implementation deps.identityAuthenticationJourneyUseCase
+    implementation deps.loanDetailsUseCase
+    implementation deps.messagesUseCase
+    implementation deps.notificationSettingsUseCaseActions
+    implementation deps.notificationSettingsUseCaseOrchestrator
+    implementation deps.notificationsUseCase
+    implementation deps.paymentAccountsUseCase
+    implementation deps.paymentContactsUseCase
+    implementation deps.paymentExternalAccountsUseCase
+    implementation deps.paymentUseCase
+    implementation deps.placesUseCase
+    implementation deps.pocketsGen2ArrangementsUseCase
+    implementation deps.pocketsPaymentsUseCase
+    implementation deps.pocketsTransactionsUseCase
+    implementation deps.pocketsUseCase
+    implementation deps.upcomingPaymentsUseCase
+    implementation deps.userProfileUseCase
+    // endregion
+
+    // region Client dependencies
+    implementation deps.accountStatementsClient
+    implementation deps.addressAutocompleteClient
+
+    implementation deps.arrangementsClient
+    implementation deps.genV2ArrangementsClient2
+    implementation deps.genV2FinancialInstitutionManagerClient1
+    implementation deps.cardsManagementClient
+    implementation deps.engagementPreferencesClient
+    implementation deps.incomeExpenseAnalyzerClient
+    implementation deps.loansClient
+    implementation deps.paymentOrderA2aClient
+    implementation deps.paymentOrderClient
+    implementation deps.transactionClient
+    implementation deps.transactionClientV2
+    implementation deps.userManagerClient
+    // endregion
+
+    // region Backbase shared library dependencies
+    implementation deps.clientsCommon
+    // endregion
+}

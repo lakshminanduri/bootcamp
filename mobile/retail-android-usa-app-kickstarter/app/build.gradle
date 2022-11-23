@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+// TODO: To enable push notifications, create a Firebase project for this app and replace this project's
+//  fake google-services.json file with a real one, downloaded from your Firebase project
+apply plugin: 'com.google.gms.google-services'
+
+apply plugin: 'org.jetbrains.kotlin.android'
+
+android {
+    compileSdkVersion sdkVersions.compileSdk
+
+    defaultConfig {
+        // TODO MANDATORY: Update applicationId to your bank's desired Application ID
+        applicationId 'com.example.banking'
+
+        minSdkVersion sdkVersions.minSdk
+        targetSdkVersion sdkVersions.targetSdk
+
+        versionCode 1
+        versionName '0.1.0'
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    packagingOptions {
+        resources {
+            excludes += resourceExclusions
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation project(':universal-useCase-collection')
+
+    coreLibraryDesugaring androidDeps.desugarJdkLibs
+
+    //region Backbase retail app artifacts
+    implementation deps.usApp
+    implementation project(':us-useCase-collection')
+
+    /**
+     * TODO: Un-comment these dependencies to switch to universal app.
+     *
+     * implementation deps.universalApp
+     * implementation project(':universal-useCase-collection')
+     */
+    //endregion
+
+    //region Other Backbase artifacts
+    implementation deps.designSystem
+    implementation deps.retailDesign
+    //endregion
+
+    implementation androidDeps.appCompat
+    implementation androidDeps.coreKtx
+    implementation coreDeps.glide
+    implementation coreDeps.kotlinStdLib
+
+    // Workaround for https://issuetracker.google.com/issues/119070777, otherwise would be androidTestImplementation
+    debugImplementation(androidDeps.fragmentTesting) {
+        exclude group: 'androidx.test'
+    }
+
+    testImplementation coreDeps.junit
+
+    androidTestImplementation androidDeps.espressoCore
+    androidTestImplementation androidDeps.junitAndroidX
+}

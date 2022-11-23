@@ -1,0 +1,50 @@
+buildscript {
+    apply from: 'gradleScripts/commonDependencies.gradle'
+
+    dependencies {
+        classpath androidDeps.androidGradlePlugin
+        classpath androidDeps.gmsGoogleServices
+        classpath coreDeps.kotlinGradlePlugin
+        classpath coreDeps.sonarGradlePlugin
+    }
+
+    repositories {
+        mavenCentral()
+        google()
+        jcenter()
+    }
+}
+
+apply from: 'gradleScripts/sonar.gradle'
+
+allprojects {
+    repositories {
+        backbaseRepositories.forEach { repoName ->
+            maven {
+                url = "https://repo.backbase.com/$repoName"
+                credentials {
+                    // These credentials must be defined in your machine's global gradle.properties file:
+                    username = backbaseRepoUsername
+                    password = backbaseRepoEncryptedPassword
+                }
+            }
+        }
+
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        google()
+        jcenter()
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            // Reverting to an older version of objenesis due to build failure during androidTest using mockK
+            // Issue link => https://github.com/mockk/mockk/issues/281
+            force("org.objenesis:objenesis:2.6")
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
