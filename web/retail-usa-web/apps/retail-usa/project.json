@@ -72,8 +72,10 @@
             "output": "assets/quick-transfer-journey-ang"
           }
         ],
-        "styles": ["apps/retail-usa/src/styles.scss",
-        "apps/retail-usa/src/themes/backbase-theme-your-playground-preset/scss/main.scss"],
+        "styles": [
+          "apps/retail-usa/src/styles.scss",
+          "apps/retail-usa/src/themes/backbase-theme-your-playground-preset/scss/main.scss"
+        ],
         "scripts": []
       },
       "configurations": {

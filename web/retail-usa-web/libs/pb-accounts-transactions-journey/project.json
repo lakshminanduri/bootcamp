@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/pb-accounts-transactions-journey",
+  "sourceRoot": "libs/pb-accounts-transactions-journey/src",
+  "prefix": "bb",
+  "targets": {
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "libs/pb-accounts-transactions-journey/src/test.ts",
+        "tsConfig": "libs/pb-accounts-transactions-journey/tsconfig.spec.json",
+        "karmaConfig": "libs/pb-accounts-transactions-journey/karma.conf.js"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/pb-accounts-transactions-journey/src/**/*.ts",
+          "libs/pb-accounts-transactions-journey/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
