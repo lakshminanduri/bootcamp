@@ -1,0 +1,79 @@
+<div class="pt-5 bb-block bb-block--xl">
+    <button
+      bbButton
+      data-role="account-details-tab__back-navigation-button"
+      buttonSize="md"
+      color="link-text"
+      class="bb-stack justify-content-start bb-stack--density-sm"
+      (click)="onNavigateBack()"
+    >
+      <bb-icon-ui size="md" name="arrow-back" class="bb-stack__item"></bb-icon-ui>
+      <span
+        class="bb-stack__item"
+        i18n="Back to my accounts|Navigation button@@accounts-details-tab-header-back-navigation-button"
+      >
+        Back to my accounts
+      </span>
+    </button>
+  </div>
+  
+  <ng-container *ngIf="accountArrangementItem$ | async as accountArrangementItem">
+    <div
+      class="bb-card bb-card--lg"
+      *ngIf="accountArrangementItem | bbIsProductKind: config.productKindsWithGraphicalRepresentation; else accountHeader"
+    >
+      <div class="bb-card__body">
+        <bb-account-graphical-header
+          data-role="accounts-details-tab__account-graphical-header"
+          [account]="accountArrangementItem"
+          [canEditAlias]="false"
+          [useShortCurrency]="true"
+          [creditLimitViewMode]="config.creditLimitViewMode"
+          [canRepay]="canInitiateRepay(accountArrangementItem)"
+          [canCashInAdvance]="canInitiateCashInAdvance(accountArrangementItem)"
+          [creditCardBackgroundType]="'darkred-card'"
+          [aliasLevel]="accountAliasDisplayingLevel"
+          [isLogoVisible]="false"
+          [showExternalInfo]="accountArrangementItem.financialInstitutionId !== undefined"
+          [externalTitle]="accountArrangementItem.financialInstitution?.name"
+          [externalLogo]="accountArrangementItem.financialInstitution?.logo"
+          (repayInitiated)="onRepayInitiated($event)"
+          (cashAdvanceInitiated)="onCashAdvanceInitiated($event)"
+        ></bb-account-graphical-header>
+      </div>
+    </div>
+    <ng-template #accountHeader>
+      <bb-account-header
+        data-role="accounts-details-tab__account-header"
+        [account]="accountArrangementItem"
+        [showBalanceType]="false"
+        [useShortCurrency]="true"
+        [aliasLevel]="accountAliasDisplayingLevel"
+        [canEditAlias]="false"
+        [showLogo]="config.showAccountIcons"
+        [showExternalInfo]="accountArrangementItem.financialInstitutionId !== undefined"
+        [externalTitle]="accountArrangementItem.financialInstitution?.name"
+        [externalLogo]="accountArrangementItem.financialInstitution?.logo"
+      ></bb-account-header>
+    </ng-template>
+  </ng-container>
+  
+  <div class="d-block">
+    <div class="d-block mx-4 pt-5">
+        
+      <ul class="bb-tab-container__tabs nav nav-tabs pb-tabs" role="tablist">
+        <li class="tab pb-tab" *ngFor="let tab of tabs" routerLinkActive="active">
+          <div class="arrow-down">
+            <div class="arrow-down-inner"></div>
+          </div>
+          <a class="d-block" [routerLink]="[tab.route]" role="tab"
+            ><strong>{{ tab?.title }}</strong></a
+          >
+        </li>
+      </ul>
+    </div>
+  
+    <div class="bb-tab-container__content tab-content" role="tabpanel">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

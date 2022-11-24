@@ -6,7 +6,6 @@ import {
   AccountsStateCommunicationService,
   AccountsTransactionsJourneyConfiguration,
   AccountsTransactionsJourneyConfigurationToken,
-  AccountsTransactionsJourneyModule,
   ACCOUNTS_TRANSACTIONS_JOURNEY_ARRANGEMENT_MANAGER_BASE_PATH,
   ACCOUNTS_TRANSACTIONS_JOURNEY_CATEGORIES_MANAGEMENT_BASE_PATH,
   ACCOUNTS_TRANSACTIONS_JOURNEY_FINANCIAL_INSTITUTION_MANAGER_BASE_PATH,
@@ -29,6 +28,7 @@ import {
   APP_TRANSACTIONS_BASE_PATH,
   APP_PAYMENT_BATCH_BASE_PATH,
 } from '../../service-paths.module';
+import {PbAccountsTransactionsJourneyModule} from '@backbase/pb-accounts-transactions-journey'
 import { environment } from '../../../environments/environment';
 
 const AccountsTransactionsConfigProvider: Provider = {
@@ -38,13 +38,15 @@ const AccountsTransactionsConfigProvider: Provider = {
     showCheckImages: true,
     disputeTopicId: '',
     inquireTopicId: '',
+    showAccountIcons:false,
+    enableDisputeAndInquiry:false,
     productKindsWithExternalDetailsPage: ProductKindUri.LOAN,
     accountAliasDisplayLevel: AccountAliasDisplayingLevel.USER,
   } as Partial<AccountsTransactionsJourneyConfiguration>,
 };
 
 @NgModule({
-  imports: [AccountsTransactionsJourneyModule.forRoot()],
+  imports: [PbAccountsTransactionsJourneyModule],
   providers: [
     AccountsTransactionsConfigProvider,
     { provide: AccountsPaymentsCommunication, useExisting: AccountsInitiatePaymentCommunication },

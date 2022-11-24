@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "pb-accounts-transactions-journey": "libs/pb-accounts-transactions-journey",
     "retail-assets": "libs/retail/assets",
     "retail-communication": "libs/retail/feature/communication",
     "retail-e2e": "libs/retail-e2e",
