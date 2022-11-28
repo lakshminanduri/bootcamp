@@ -28,22 +28,30 @@ import {
   APP_TRANSACTIONS_BASE_PATH,
   APP_PAYMENT_BATCH_BASE_PATH,
 } from '../../service-paths.module';
-import {PbAccountsTransactionsJourneyModule} from '@backbase/pb-accounts-transactions-journey'
+import { PbAccountsTransactionsJourneyModule } from '@backbase/pb-accounts-transactions-journey'
 import { environment } from '../../../environments/environment';
+import { RetailAppRemoteConfig } from '../../remote-config/remote-config';
+import { RemoteConfigService } from '@backbase/remote-config-ang';
 
 const AccountsTransactionsConfigProvider: Provider = {
   provide: AccountsTransactionsJourneyConfigurationToken,
-  useValue: {
+  useFactory: (
+    remoteConfig: RemoteConfigService<RetailAppRemoteConfig>,
+  ): Partial<AccountsTransactionsJourneyConfiguration> => ({
     apiKey: environment.googleApiKey,
     showCheckImages: true,
     disputeTopicId: '',
     inquireTopicId: '',
-    showAccountIcons:false,
-    enableDisputeAndInquiry:false,
+    showAccountIcons: false,
+    enableDisputeAndInquiry: false,
+    enableManageAccounts: remoteConfig.getValue('show_manage_accounts'),
     productKindsWithExternalDetailsPage: ProductKindUri.LOAN,
     accountAliasDisplayLevel: AccountAliasDisplayingLevel.USER,
-  } as Partial<AccountsTransactionsJourneyConfiguration>,
+  }) as Partial<AccountsTransactionsJourneyConfiguration>,
+
+  deps: [RemoteConfigService],
 };
+
 
 @NgModule({
   imports: [PbAccountsTransactionsJourneyModule],
@@ -79,4 +87,4 @@ const AccountsTransactionsConfigProvider: Provider = {
     },
   ],
 })
-export class AccountsTransactionsJourneyBundleModule {}
+export class AccountsTransactionsJourneyBundleModule { }
