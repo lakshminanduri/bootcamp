@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/redeem-rewards-journey",
+  "sourceRoot": "libs/redeem-rewards-journey/src",
+  "prefix": "bb",
+  "targets": {
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "libs/redeem-rewards-journey/src/test.ts",
+        "tsConfig": "libs/redeem-rewards-journey/tsconfig.spec.json",
+        "karmaConfig": "libs/redeem-rewards-journey/karma.conf.js"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/redeem-rewards-journey/src/**/*.ts", "libs/redeem-rewards-journey/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

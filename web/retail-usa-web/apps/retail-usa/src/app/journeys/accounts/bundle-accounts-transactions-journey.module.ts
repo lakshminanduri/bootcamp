@@ -44,9 +44,9 @@ const AccountsTransactionsConfigProvider: Provider = {
     inquireTopicId: '',
     showAccountIcons: false,
     enableDisputeAndInquiry: false,
-    enableManageAccounts: remoteConfig.getValue('show_manage_accounts'),
     productKindsWithExternalDetailsPage: ProductKindUri.LOAN,
     accountAliasDisplayLevel: AccountAliasDisplayingLevel.USER,
+    enableManageAccounts: remoteConfig.getValue('show_manage_accounts'),
   }) as Partial<AccountsTransactionsJourneyConfiguration>,
 
   deps: [RemoteConfigService],

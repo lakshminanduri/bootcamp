@@ -5,6 +5,7 @@ export type QuickActionLink = {
   title: string;
   url: string;
   permission?: string;
+  remoteConfig?:boolean
 };
 @Component({
   selector: 'bb-quick-actions',

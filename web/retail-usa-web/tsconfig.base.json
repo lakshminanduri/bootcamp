@@ -19,9 +19,11 @@
     "paths": {
       "@backbase/business/update-plugin": ["libs/plugins/business/update-plugin/src/index.ts"],
       "@backbase/pb-accounts-transactions-journey": ["libs/pb-accounts-transactions-journey/src/index.ts"],
+      "@backbase/redeem-rewards-journey": ["libs/redeem-rewards-journey/src/index.ts"],
       "@backbase/retail-e2e": ["libs/retail-e2e/src/index.ts"],
       "@backbase/retail/feature/communication": ["libs/retail/feature/communication/src/index.ts"],
       "@backbase/retail/feature/layout": ["libs/retail/feature/layout/src/index.ts"],
+      "@backbase/rewards-http": ["libs/rewards-http/src/index.ts"],
       "@backbase/shared/feature/auth": ["libs/shared/feature/auth/src/index.ts"],
       "@backbase/shared/feature/routable-modal": ["libs/shared/feature/routable-modal/src/index.ts"],
       "@backbase/shared/feature/user-context": ["libs/shared/feature/user-context/src/index.ts"],

@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/rewards-http",
+  "sourceRoot": "libs/rewards-http/src",
+  "prefix": "bb",
+  "targets": {
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "libs/rewards-http/src/test.ts",
+        "tsConfig": "libs/rewards-http/tsconfig.spec.json",
+        "karmaConfig": "libs/rewards-http/karma.conf.js"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/rewards-http/src/**/*.ts", "libs/rewards-http/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

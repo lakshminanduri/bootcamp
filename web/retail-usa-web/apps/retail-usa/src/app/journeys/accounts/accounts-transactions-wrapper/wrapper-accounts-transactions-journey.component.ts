@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RemoteConfigService } from '@backbase/remote-config-ang';
+import { RetailAppRemoteConfig } from '@backbase/retail-loans-journey-ang/lib/models/remote-config.model';
 import { PERMISSIONS } from '../../../auth/permissions';
 import { QuickActionLink } from '../quick-actions.component';
 
@@ -27,11 +29,13 @@ import { QuickActionLink } from '../quick-actions.component';
 })
 export class AccountsTransactionsJourneyWrapperComponent {
   quickActionLinks: QuickActionLink[] = [
+    
     {
       menuIcon: 'settings',
       title: $localize`:Link Title|Manage accounts@@accounts.quick-actions.span.manageAccounts:Manage Accounts`,
       url: '/my-accounts/manage',
       permission: PERMISSIONS.canViewMyAccounts,
+      remoteConfig: this.remoteConfig.getValue('show_manage_accounts')
     },
     {
       menuIcon: 'flight',
@@ -64,4 +68,5 @@ export class AccountsTransactionsJourneyWrapperComponent {
       permission: PERMISSIONS.canViewPlaces,
     },
   ];
+  constructor(private readonly remoteConfig: RemoteConfigService<RetailAppRemoteConfig>){}
 }
