@@ -525,6 +525,22 @@
             </div>
           </a>
         </li>
+        <li >
+          <a
+            class="bb-layout__horizontal-nav-submenu-link"
+            ngbDropdownItem
+            routerLinkActive="bb-layout__horizontal-nav-submenu-link--active"
+            routerLink="/self-service/redeem-rewards"
+            #redeemRewardsRouterLink="routerLinkActive"
+            [attr.aria-current]="redeemRewardsRouterLink.isActive ? 'page' : undefined"
+          >
+            <div class="bb-layout__bb-horizontal-nav-submenu-item-label">
+              <div class="bb-layout__bb-horizontal-nav-submenu-title" i18n="@@redeem-rewards.nav.item.title">
+               Redeem Rewards
+              </div>
+            </div>
+          </a>
+        </li>
       </ul>
     </div>
   </li>

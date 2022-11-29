@@ -230,6 +230,7 @@ const routes: Routes = [
         path: 'self-service',
         data: { cssClasses: ['container--fixed-width mx-auto'] },
         children: [
+          
           {
             path: 'profile',
             loadChildren: () =>
@@ -315,6 +316,16 @@ const routes: Routes = [
             data: {
               title: $localize`:@@manage-statements.nav.item.title:Manage statements - Self services - Retail Banking`,
               entitlements: PERMISSIONS.canViewManageStatements,
+            },
+          },
+          {
+            path: 'redeem-rewards',
+            loadChildren: () =>
+              import('./journeys/self-service/bundle-redeem-rewards-journey.module').then(
+                (m) => m.RedeemRewardsJourneyBundleModule,
+              ),
+            data: {
+              title: $localize`:@@redeem-rewards.nav.item.title:Redeem Rewards - Self services -  Retail Banking`,
             },
           },
         ],
